@@ -7,30 +7,23 @@ const formatTime = (seconds) => {
   const minutes = Math.floor((seconds % 3600) / 60);
   const remainingSeconds = seconds % 60;
 
-  return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(
-    2,
-    '0'
-  )}:${String(remainingSeconds).padStart(2, '0')}`;
+  return [
+    hours.toString().padStart(2, '0'),
+    minutes.toString().padStart(2, '0'),
+    remainingSeconds.toString().padStart(2, '0'),
+  ].join(':');
 };
 
 const createTimerAnimator = () => {
   let intervalId = null;
 
   return (seconds) => {
-    if (intervalId) {
-      clearInterval(intervalId);
-    }
-
+    clearInterval(intervalId);
     let currentTime = seconds;
 
     intervalId = setInterval(() => {
       timerEl.textContent = formatTime(currentTime);
-
-      if (currentTime === 0) {
-        clearInterval(intervalId);
-      } else {
-        currentTime -= 1;
-      }
+      currentTime = currentTime > 0 ? currentTime - 1 : 0;
     }, 1000);
   };
 };
@@ -50,9 +43,6 @@ inputEl.addEventListener('keydown', (event) => {
 });
 
 buttonEl.addEventListener('click', () => {
-  const seconds = Number(inputEl.value);
-
-  animateTimer(seconds);
-
+  animateTimer(Number(inputEl.value));
   inputEl.value = '';
 });
