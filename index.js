@@ -1,6 +1,7 @@
 const inputEl = document.querySelector('input');
 const buttonEl = document.querySelector('button');
 const timerEl = document.querySelector('span');
+const enteredValueEl = document.querySelector('.entered-value');
 
 const formatTime = (seconds) => {
   const hours = Math.floor(seconds / 3600);
@@ -37,12 +38,18 @@ inputEl.addEventListener('input', () => {
 inputEl.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     event.preventDefault();
-    animateTimer(Number(inputEl.value));
+    const seconds = Number(inputEl.value);
+    animateTimer(seconds);
+    enteredValueEl.textContent =
+      seconds === 1 ? '1 second' : `${seconds} seconds`;
     inputEl.value = '';
   }
 });
 
 buttonEl.addEventListener('click', () => {
-  animateTimer(Number(inputEl.value));
+  const seconds = Number(inputEl.value);
+  animateTimer(seconds);
+  enteredValueEl.textContent =
+    seconds === 1 ? '1 second' : `${seconds} seconds`;
   inputEl.value = '';
 });
