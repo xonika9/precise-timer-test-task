@@ -29,6 +29,14 @@ const createTimerAnimator = () => {
   };
 };
 
+const startTimer = () => {
+  const seconds = Number(inputEl.value);
+  animateTimer(seconds);
+  enteredValueEl.textContent =
+    seconds === 1 ? '1 second' : `${seconds} seconds`;
+  inputEl.value = '';
+};
+
 const animateTimer = createTimerAnimator();
 
 inputEl.addEventListener('input', () => {
@@ -38,18 +46,8 @@ inputEl.addEventListener('input', () => {
 inputEl.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     event.preventDefault();
-    const seconds = Number(inputEl.value);
-    animateTimer(seconds);
-    enteredValueEl.textContent =
-      seconds === 1 ? '1 second' : `${seconds} seconds`;
-    inputEl.value = '';
+    startTimer();
   }
 });
 
-buttonEl.addEventListener('click', () => {
-  const seconds = Number(inputEl.value);
-  animateTimer(seconds);
-  enteredValueEl.textContent =
-    seconds === 1 ? '1 second' : `${seconds} seconds`;
-  inputEl.value = '';
-});
+buttonEl.addEventListener('click', startTimer);
