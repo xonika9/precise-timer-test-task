@@ -41,6 +41,14 @@ inputEl.addEventListener('input', () => {
   inputEl.value = inputEl.value.replace(/\D+/g, '');
 });
 
+inputEl.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    animateTimer(Number(inputEl.value));
+    inputEl.value = '';
+  }
+});
+
 buttonEl.addEventListener('click', () => {
   const seconds = Number(inputEl.value);
 
