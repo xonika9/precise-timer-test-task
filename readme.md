@@ -12,7 +12,7 @@
 - CSS
 - JavaScript
 
-Link to [GitHub Pages](https://xonika9.github.io/precise-timer-test-task/)
+Link to [GitHub Pages](https://precise-timer-test-task.vercel.app/)
 
 ## Реализация
 
