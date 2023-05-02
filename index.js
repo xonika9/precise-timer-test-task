@@ -32,8 +32,6 @@ const createTimerAnimator = () => {
 const startTimer = () => {
   const seconds = Number(inputEl.value);
   animateTimer(seconds);
-  enteredValueEl.textContent =
-    seconds === 1 ? '1 second' : `${seconds} seconds`;
   inputEl.value = '';
 };
 
