@@ -12,7 +12,7 @@
 - CSS
 - JavaScript
 
-Link to [GitHub Pages](https://precise-timer-test-task.vercel.app/)
+Link to [Vercel Deploy](https://precise-timer-test-task.vercel.app/)
 
 ## Реализация
 
